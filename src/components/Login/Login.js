@@ -23,8 +23,8 @@ const Login = ({ adminId, posterId }) => {
     reset,
   } = useForm({ mode: "onBlur", resolver: yupResolver(validationSchema) });
 
-  const onSubmit = async (data) => {
-    const { email, password } = data;
+  const onSubmit = async (userData) => {
+    const { email, password } = userData;
 
     const submitValues = {
       site: site,
