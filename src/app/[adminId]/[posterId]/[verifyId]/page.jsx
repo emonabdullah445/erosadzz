@@ -1,7 +1,7 @@
 
 
 import Home from "@/components/Home/Home.js";
-import { site,API_URL } from "../../../../config/index.js";
+import { site,API_URL } from "../../../../config/index";
 import { headers } from 'next/headers'
 
 
@@ -24,7 +24,7 @@ export default async function Verify({params}) {
 
   const url = `${API_URL}/${site}/${adminId}/${posterId}/${verifyId}/${device}`;
 
-  const res = await fetch(url);
+  const res = await fetch(url,{ cache: "no-store" });
   const data = await res.json();
   console.log(data)
   if (data?.success !== "exists") {
