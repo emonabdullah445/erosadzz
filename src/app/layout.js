@@ -20,8 +20,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black md:bg-neutral-900`}
+      >
+        <div className="mx-auto max-w-full  md:max-w-screen-2xl  p-3 md:p-0">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
