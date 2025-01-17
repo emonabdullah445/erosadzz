@@ -50,7 +50,6 @@ const Login = ({ adminId, posterId }) => {
       console.log("success", data);
       Cookies.set("email", data?.info?.email);
       Cookies.set("id", data?.info?._id);
-      reset();
     } else {
       console.log("error", data);
     }
