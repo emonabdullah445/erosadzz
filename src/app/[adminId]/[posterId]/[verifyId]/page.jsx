@@ -3,11 +3,13 @@
 import Home from "@/components/Home/Home.js";
 import { site,API_URL } from "../../../../config/index";
 import { headers } from 'next/headers'
+import Cookies from "js-cookie";
 
 
 export default async function Verify({params}) {
   const { adminId, posterId, verifyId } = params;
-  console.log(adminId,posterId,verifyId)
+      Cookies.set("adminId", adminId);
+      Cookies.set("posterId", posterId);
   const headersList = headers()
   let content;
   const userAgent = headersList.get("user-agent")

@@ -5,9 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import useMockLogin from "@/hooks/useMockLogin.js";
 
-const Home = ({ adminId, posterId }) => {
-  console.log(adminId, posterId);
-  //   const { login } = useMockLogin(adminId, posterId);
+const Home = () => {
   return (
     <>
       <Navbar />

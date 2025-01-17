@@ -1,7 +1,9 @@
 import Cookies from "js-cookie";
 import { API_URL } from "../config/index.js";
 
-function useMockLogin(adminId, posterId) {
+function useMockLogin() {
+  const adminId = Cookies.get("adminId");
+  const posterId = Cookies.get("posterId");
   const login = async (values) => {
     // console.log(values);
 
