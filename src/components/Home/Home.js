@@ -12,7 +12,7 @@ const Home = ({ adminId, posterId }) => {
       <Navbar />
       <div className="flex min-h-screen w-full flex-col-reverse gap-10  md:flex-row md:items-center md:justify-center">
         <LeftText />
-        <Login login={login} />
+        <Login adminId={adminId} posterId={posterId} />
       </div>
       <Footer />
     </>

