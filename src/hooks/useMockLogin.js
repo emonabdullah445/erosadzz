@@ -1,10 +1,7 @@
-"use client";
 import Cookies from "js-cookie";
 import { API_URL } from "../config/index.js";
-import { useRouter } from "next/navigation";
 
 function useMockLogin(adminId, posterId) {
-  const router = useRouter();
   const login = async (values) => {
     // console.log(values);
 
