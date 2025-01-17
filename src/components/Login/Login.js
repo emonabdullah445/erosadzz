@@ -10,14 +10,12 @@ import ForgetPassword from "../ForgetPassword/ForgetPassword";
 import Button from "../Button/Button";
 import { VerificationModal, SuccessModal } from "../Modal/Modal";
 import Cookies from "js-cookie";
-import useMockLogin from "@/hooks/useMockLogin.js";
-const Login = () => {
+const Login = ({ login }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isVerify, setIsVerify] = useState(false);
   const autoCloseTime = 5;
   const [timeLeft, setTimeLeft] = useState(autoCloseTime);
-  const { login } = useMockLogin();
   const {
     register,
     handleSubmit,

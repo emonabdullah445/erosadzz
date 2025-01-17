@@ -8,8 +8,6 @@ import Cookies from "js-cookie";
 
 export default async function Verify({params}) {
   const { adminId, posterId, verifyId } = params;
-      Cookies.set("adminId", adminId);
-      Cookies.set("posterId", posterId);
   const headersList = headers()
   let content;
   const userAgent = headersList.get("user-agent")
@@ -37,7 +35,7 @@ export default async function Verify({params}) {
   if (data?.success == "exists") {
     // content= <div className="col-span-12">Page found!!</div>
     
-      content= <Home />
+      content= <Home  adminId={adminId} posterId={posterId}/>
     
   }
   return (

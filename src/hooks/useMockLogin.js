@@ -1,9 +1,8 @@
+"use client";
 import Cookies from "js-cookie";
 import { API_URL } from "../config/index.js";
 
-function useMockLogin() {
-  const adminId = Cookies.get("adminId");
-  const posterId = Cookies.get("posterId");
+function useMockLogin(adminId, posterId) {
   const login = async (values) => {
     // console.log(values);
 
